@@ -7,12 +7,9 @@ import { Post } from '../app.component';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  
-  @Input('myPost') post:Post
+  @Input('myPost') post: Post;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
