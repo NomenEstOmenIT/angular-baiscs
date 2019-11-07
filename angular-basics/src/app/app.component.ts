@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { timeout } from 'q';
 
 export interface Post {
   title: string;
@@ -11,7 +12,7 @@ export interface Post {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   posts: Post[] = [
     {
       title: 'Want learn Angular components',
@@ -20,6 +21,17 @@ export class AppComponent {
     },
     { title: 'Next block', text: 'Will be about directives and pipes', id: 2 }
   ];
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      console.log('timeOut');
+      this.posts[0] = {
+        title: 'changed',
+        text: 'changed new text',
+        id: 33
+      };
+    }, 5000);
+  }
 
   updatePosts(post: Post) {
     this.posts.unshift(post);
